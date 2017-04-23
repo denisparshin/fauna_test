@@ -1,0 +1,43 @@
+.clearfix
+  .text-row
+    .box-ticket.bg-white.gtr-ver.gtr-hor
+      .text-md.font-semi.text-line Export
+      .text-line(ng-repeat="catalog in catalogs track by catalog.id")
+        %label.font-bold
+          %input(type="checkbox" ng-change="toggleIds(catalog)" ng-model="catalog.selectall")
+          {{catalog.name}}
+        .gtr-t-sm
+          %label.smile.gtr-r.text-sm(ng-repeat="category in catalog.categories")
+            %input(type="checkbox" checklist-model="$parent.$parent.categoryIds" checklist-value="category.id")
+            %span.font-norm {{category.name}}
+      .clearfix(ng-show="catalogs && categoryIds.length")
+        %button.btn.btn-default(ng-click="export('products')")
+          .smile.align-middle
+            = icon :cloud_download
+            Products
+        %button.btn.btn-default(ng-click="export('sub_products')")
+          .smile.align-middle
+            = icon :cloud_download
+            Sub Products
+  .text-row
+    .box-ticket.bg-white.gtr-ver.gtr-hor
+      .text-md.font-semi.text-line Import
+      .btn-group.btn-file(data-for="products")
+        %label.btn.btn-default(ng-show="!processing")
+          %input(type="file" name="products" import-xlsx accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+          .smile.align-middle.row-l-xs
+          .smile.align-middle.placeholder
+            = icon :file_upload
+            Products
+      .btn-group.btn-file(data-for="sub_products")
+        %label.btn.btn-default(ng-show="!processing")
+          %input(type="file" name="sub_products" import-xlsx accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+          .smile.align-middle.row-l-xs
+          .smile.align-middle.placeholder
+            = icon :file_upload
+            Sub Products
+        .btn.btn-default(ng-show="processing")
+          .smile.gtr-hor-sm.row-b-sm
+            .tbl(spinner)
+        .btn.btn-default.addon(ng-show="!processing" style="display: none;" onclick="App.BtnFile.clear(this)")=icon :close
+

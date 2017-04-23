@@ -1,0 +1,27 @@
+.btn-default {
+  @include button-variant(#222, #eee, #eee);
+}
+.btn-file {
+  input {
+    position: absolute;
+    left: -999em;
+  }
+}
+.btn-select {
+  @extend .form-control;
+  position: relative;
+  text-align: left;
+  padding-right: 3rem;
+  .caret {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3rem;
+    display: block;
+    text-align: center;
+    border: 0;
+    @include icomoon($icon-angle-down);
+    line-height: 3.2rem;
+    font-size: 0.8em;
+  }
+}

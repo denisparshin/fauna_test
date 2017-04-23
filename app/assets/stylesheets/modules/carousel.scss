@@ -1,0 +1,38 @@
+.carousel {
+  &-indicators {
+    position: relative;
+    float: left;
+    width: 100%;
+    margin: 0;
+    padding: 10px 0;
+    display: block;
+    left: 0;
+    bottom: auto;
+    li {
+      border: 1px solid #666;
+      &.active {
+        background-color: #666;
+      }
+    }
+  }
+  &-inner {
+    .item {
+      text-align: center;
+      > img {
+        max-width: 100%;
+        display: inline-block;
+      }
+      &.active {
+        @include animation(fade 1s);
+      }
+    }
+  }
+}
+@include keyframes(fade){
+  0% {
+    @include opacity(0);
+  }
+  100% {
+    @include opacity(1);
+  }
+}

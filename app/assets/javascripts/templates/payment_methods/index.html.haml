@@ -1,0 +1,34 @@
+.clearfix
+  .clearfix(ng-repeat="payment_method in payment_methods")
+    .text-line
+      .bg-white.box-tickets
+        .gtr-hor.gtr-t
+          .clearfix.text-md.font-bold
+            {{payment_method.name}}
+            
+            %a(ng-href="/#/payment_methods/{{::payment_method.id}}")
+              .smile.align-middle.text-xs.gtr-l-xs
+                = icon :pencil
+      
+            
+        .gtr-ver
+          .col-xs-4
+            {{payment_method.description}}
+%h3 Добавить новый способ оплаты
+.gtr-hor.gtr-t
+  %form(name="paymentMethodForm" ng-submit="submit(sub, paymentMethodForm)")
+    .row
+      .col-xs-3
+        %label.form-label.required
+          .form-label-text
+            {{::"js.payment_methods.attributes.name" | translate}}
+          %input.form-control(ng-model="sub.name" required)
+      .col-xs-4
+        %label.form-label.required
+          .form-label-text {{::"js.payment_methods.attributes.description" | translate}}
+          %input.form-control(ng-model="sub.description" required)
+      .tbl
+        .tbl-cell.align-bottom.text-right
+          .gtr-b-sm.smile(ng-show="paymentMethodForm.$dirty")
+            %button.btn.btn-primary(type="submit" ng-disabled="!paymentMethodForm.$valid") {{::"js.helpers.save" | translate}}
+          .gtr-b-sm.smile(ng-show="sub.id")

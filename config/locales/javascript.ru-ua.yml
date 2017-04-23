@@ -1,0 +1,207 @@
+ru-ua:
+  js:
+    import:
+      title: "Импорт/Экспорт"
+    orders:
+      title: "Заказы"
+      order_from: 'Заказ от'
+      statuses:
+        created:
+          color: "#b9e9f7"
+          title: "Необработанный"
+        in_progress:
+          color: "#F7B9E1"
+          title: "Формируется"
+        sent:
+          color: "#B3DFF5"
+          title: "Отправлен"
+        aproved:
+          color: "#cbf7b9"
+          title: "Выполнен"
+        declined:
+          color: "#ffc6c6"
+          title: "Отклонен"
+        waiting:
+          color: 'wheat'
+          title: 'Отложен'
+    top_slider:
+      title: "Слайдер на главной"
+    product:
+      buy: 'В корзину'
+      price: 'Цена'
+      sku: 'Артикул'
+    order:
+      comment_to_order: 'Комментарий к заказу'
+      items_in_cart: 'Товары в корзине'
+      order_from: 'Заказ от'
+      payment_methods: 'Способы оплаты'
+      payment_method: 'Способ оплаты'
+      personal_data: 'Личные данные'
+      shipping_methods: 'Способы доставки'
+      shipping_method: 'Способ доставки'
+    forms:
+      name: 'Имя'
+      last_name: 'Фамилия'
+      phone: 'Телефон'
+      address: 'Адрес'
+      region: 'Область'
+      city: 'Город'
+      email: "Email"
+    helpers:
+      add: "Добавить"
+      all: 'Все'
+      are_you_sure: "Вы уверены?"
+      blankstate: 'Пока что контента нет('
+      call_request: 'Заказать звонок'
+      cancel: "Отменить"
+      close: "Закрыть"
+      close: 'Закрыть'
+      confirm: "Согласен"
+      currency: 'грн'
+      date_from: 'С (дата)'
+      date_to: 'По (дата)'
+      delete: "Удалить"
+      filters: 'Фильтры'
+      nothing_found: "Ничего не найдено :( Попробуйте уточнить поиск."
+      save: "Сохранить"
+      search: 'Поиск'
+      status: 'Статус'
+      submit: "Отправить"
+      apply: "Применить"
+    categories:
+      title: "Категории"
+      attributes:
+        name: "Имя"
+        add_new: "Добавить новую категорию"
+      info:
+        successfully_created: "Категория была успешно добавлена"
+    catalogs:
+      title: "Каталоги"
+      is_updated: "Каталог обновлен"
+      info:
+        successfully_removed: "Каталог был успешно удален"
+        successfully_created: "Каталог был успешно добавлен"
+      attributes:
+        name: "Имя"
+        add_new: "Добавить новый каталог"
+      actions:
+        delete: "Удалить каталог"
+        confirm_remove: "Вы действительно хотите удалить этот каталог?"
+    pictures:
+      actions:
+        add: "Добавить изображение"
+        delete: "Удалить изображение"
+        confirm_remove: "Вы действительно хотите удалить это изображение?"
+        set_as_main: "Установить основной"
+      slider: "Изображения"
+      info:
+        successfully_removed: "Изображение успешно удалено."
+        is_main: "Основное изображение"
+        main_pic_is_set: "Установлено новое основное изображение"
+    payment_methods:
+      title: "Способы оплаты"
+      is_updated: "Способ оплаты обновлен"
+      actions:
+        delete: "Удалить cпособ оплаты"
+        confirm_remove: "Вы действительно хотите удалить этот способ оплаты?"
+        add_new: "Добавить новый способ оплаты"
+      info:
+        successfully_removed: "Способ оплаты был успешно удален"
+        successfully_created: "Способ оплаты был успешно добавлен"
+      attributes:
+        name: "Имя"
+        description: "Описание"
+    sub_products:
+      actions:
+        add_new: "Добавить новый подпродукт"
+        delete: "Удалить подпродукт"
+        confirm_remove: "Вы действительно хотите удалить этот подпродукт?"
+      info:
+        successfully_removed: "Подпродукт был успешно удален"
+        successfully_created: "Подпродукт успешно добавлен"
+        successfully_updated: "Подпродукт успешно изменен"
+      attributes:
+        name: "Имя"
+        price: "Цена"
+        count: "Остаток (шт)"
+        visible: "На витрине"
+        avail: "В наличии"
+        sku: "Артикул"
+    products:
+      placeholder:
+        category_id: "Категория..."
+        catalog_id: "Каталог..."
+        keyword: "Слово или фраза..."
+        order_by: "Сортировать..."
+      sorting:
+        - name: "От А до Я"
+          value: "name-asc"
+        - name: "От Я до А"
+          value: "name-desc"
+        - name: "Последние добавленные"
+          value: "created_at-desc"
+        - name: "Первые добавленные"
+          value: "created_at-asc"
+      title: "Товары"
+      successfully_removed: "Товар был успешно удален"
+      actions:
+        delete: "Удалить товар"
+        confirm_remove: "Вы действительно хотите безвозвратно удалить этот товар со всеми подтоварами и картинками?"
+      tabs:
+        info: "Информация"
+        slider: "Картинки"
+        comments: "Комментарии"
+        sub_products: "Подпродукты"
+      info:
+        successfully_created: "Продукт был успешно добавлен"
+        successfully_removed: "Продукт был успешно удален"
+        successfully_updated: "Продукт успешно обновлен"
+      attributes:
+        name: "Имя"
+        title: "Заголовок (title)"
+        category_id: "id Категории"
+        add_new: "Добавить новый продукт"
+        metatag_attributes:
+          keywords: "Мета keywords"
+          description: "Мета description"
+        description: "Описание"
+    info:
+      something_went_wrong: "Что-то пошло не так:( Пожалуйста перезагрузите страницу"
+    attributes:
+      name: 'Имя'
+      slug: 'URL (желательно латинские буквы без пробелов). Например: Сухой корм - sukhoi_korm'
+      description: 'Описание'
+    users:
+      title: "Пользователи"
+      confirm_password: 'Еще раз пароль'
+      email: "Email"
+      enter: "Войти"
+      login: "Логин"
+      forgot_a_password: "Забыли пароль?"
+      password: "Пароль (min. 6 символов)"
+      remember_me: "Запомнить меня"
+      sign_in: "Войти"
+      sign_up: 'Зарегистрироваться'
+      signed_out: "Успешно вышли"
+      have_account: "Уже есть аккаунт?"
+      have_no_account: "Еще нет аккаунта?"
+      signed_in: "Успешно вошли"
+      signed_out: "Успешно вышли"
+      signed_up: "Регистрация успешна"
+      profile_updated: "Ваш профиль был обновлен"
+      attributes:
+        first_name: "Имя"
+        last_name: "Фамилия"
+        username: "Логин"
+        username: "Логин"
+        phone: "Телефон"
+        e-mail: "e-mail"
+        discount: "Скидка"
+        city: "Город"
+        address: "Адрес"
+      is_updated: "Пользователь обновлен"
+      actions:
+        delete: "Удалить пользователя"
+        confirm_remove: "Вы действительно хотите безвозвратно удалить этого пользователя?"
+    info:
+      nothing_found: "Ничего не найдено :("

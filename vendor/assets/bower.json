@@ -1,0 +1,15 @@
+{
+  "name": "dsl-generated dependencies",
+  "dependencies": {
+    "angular": "~1.4.x",
+    "angular-strap": "2.3.6",
+    "angular-route": "~1.4.x",
+    "angular-translate": "2.8.0",
+    "ng-file-upload": "9.0.7",
+    "underscore": "1.8.3",
+    "checklist-model": "0.6.0",
+    "angular-devise": "latest",
+    "angular-summernote": "0.7.1",
+    "js-xlsx": "latest"
+  }
+}

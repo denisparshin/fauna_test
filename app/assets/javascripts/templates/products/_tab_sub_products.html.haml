@@ -1,0 +1,7 @@
+.tab-content.bg-white.gtr-hor.gtr-ver
+  .text-line.row-t
+    .clearfix(ng-repeat="sub in sub_products track by $index")
+      %tab-sub-products-item
+  .clearfix
+    %button.btn-link(type="button" ng-click="addNew()") {{::"js.sub_products.actions.add_new" | translate}}
+    

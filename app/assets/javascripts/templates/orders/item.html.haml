@@ -1,0 +1,61 @@
+.box-tickets.bg-white(style="background-color: {{statuses[order.status].color}}")
+  .gtr-ver
+    .col-xs-6
+      {{'js.orders.order_from'|translate}}:
+      {{::order.created_at | date:"dd/MM/yyyy 'в' HH:mm"}}
+    .col-xs-6.text-right
+      .smile.font-bold.gtr-right-sm.align-middle Status:
+      .smile.align-middle(ng-init="status=order.status")
+        %select.form-control(ng-model="status" ng-change="updateStatus(order, status)")
+          %option(ng-repeat="(key, status) in statuses" value="{{key}}" ng-selected="order.status==key") {{::status.title}}
+  .gtr-hor
+    .gtr-b-sm(ng-if="order.user")
+      %a(ng-href="/members/{{::order.user.username}}") {{::order.user.username}}
+    .clearfix(ng-if="order.number")
+      %b {{::order.number}}
+    .tbl
+      .tbl-cell.cell-2
+        .gtr-b-xs
+          %b {{'js.forms.name' | translate}}:
+          {{::order.name}}
+          {{::order.last_name}}
+        .gtr-b-xs
+          %b {{'js.forms.phone' | translate}}:
+          {{::order.phone}}
+        .gtr-b-xs(ng-show="order.email")
+          %b {{'js.forms.email' | translate}}:
+          {{::order.email}}
+        .gtr-b-xs
+          %b {{'js.forms.city' | translate}}:
+          {{::order.city}}
+        .gtr-b-xs
+          %b {{'js.forms.address' | translate}}:
+          {{::order.address}}
+      .tbl-cell.cell-4
+        .gtr-b-xs
+          %b {{'js.order.shipping_method' | translate}}:
+          .clearifix
+            {{::order.shipping_method.name}}
+          .text-sm
+            {{::order.shipping_method.description}}
+        .gtr-b-xs
+          %b {{'js.order.payment_method' | translate}}:
+          .clearifix
+            {{::order.payment_method.name}}
+          .text-sm
+            {{::order.payment_method.description}}
+      .tbl-cell.cell-5
+        .clearfix(ng-repeat="sub in order.data track by $index")
+          %order-sub-product
+      .tbl-cell.cell-1.text-right
+        = icon :pencil
+    .gtr-ver-xs(ng-if="order.comment")
+      %b {{'js.order.comment_to_order' | translate}}:
+      .clearfix
+        {{::order.comment}}
+    .gtr-ver-sm.text-md.font-bold.text-right
+      Итого:
+      {{::order.summ | currency}}
+      %span(ng-if="order.discount && order.discount > 0")
+        %span - {{::order.discount}} %
+        %span = {{::order.summ * (1 - (order.discount / 100)) | currency}}

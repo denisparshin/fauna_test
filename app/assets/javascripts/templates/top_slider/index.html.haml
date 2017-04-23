@@ -1,0 +1,25 @@
+.tab-content.bg-white.gtr-hor.gtr-ver(ng-init="slider={}")
+  .row
+    %span(ng-repeat="picture in topSliders track by $index")
+      .col-xs-3
+        .text-row
+          .pic-link(ng-class="{'active': slider.primary_pic_id==picture.id}")
+            .link-remove-tl.cursor-pointer(ng-click="removePic(picture.id, $index)" confirm="{{::'js.pictures.actions.confirm_remove' | translate}}")
+              %span(bs-tooltip title="{{::'js.pictures.actions.delete' | translate}}" container="body")
+                = icon :trash, class: "btn-link link-red"
+            .clearfix.position-relative(ng-click="carouselShow($index)")
+              %svg(class="col-12" preserveAspectRatio="none" viewBox="0 0 1 1")
+              .cover.bg-contain(style="background-image: url('{{picture.url}}')")
+    .col-xs-3
+      .text-row
+        .clearfix.position-relative.border-hor.border-ver.border-light.btn-default
+          %svg(class="col-12" preserveAspectRatio="none" viewBox="0 0 1 1")
+          %label.cover.bg-superlight.nospace
+            %input.form-pull(type="file" accept="image/*" ng-disabled="loadingPic" onchange="angular.element(this).scope().showPreview(this)")
+            .tbl
+              .tbl-cell.cell-12.align-middle.text-center.btn-link.gtr-b(ng-class="{'cursor-pointer': !loadingPic}")
+                %span(ng-show="!loadingPic")
+                  =icon :plus, class: "head-lg"
+                  .clearfix {{::"js.pictures.actions.add" | translate}}
+                .tbl.gtr-t(ng-show="loadingPic" spinner)
+  .row-b-2x

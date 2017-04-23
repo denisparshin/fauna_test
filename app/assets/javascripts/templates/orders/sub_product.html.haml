@@ -1,0 +1,16 @@
+.smile
+  .tbl
+    .tbl-cell.cell-3em.align-middle.gutter-right
+      .bg-white.border-horizontal.border-vertical.border-light.radius-base
+        %a(href ng-link="/products/{{::subProducts[sub.sku].product.id}}")
+          %img(ng-src="{{::subProducts[sub.sku].product.pic_micro}}" style="width: 40px")
+    .tbl-cell.align-middle.cell-10.gtr-l-sm
+      %a.link-base(href ng-link="/products/{{::subProducts[sub.sku].product.id}}")
+        {{::subProducts[sub.sku].product.name}}
+        .text-sm
+          %span.font-bold {{::'js.product.sku' | translate}}:
+          %span.color-lightdim {{::subProducts[sub.sku].sku}}
+      .clearfix.text-sm.gutter-top-xs.color-lightdim
+        {{::sub.price | currency}} &times; {{sub.amount}}
+        \=
+        %span.font-bold {{sub.price * sub.amount | currency}}

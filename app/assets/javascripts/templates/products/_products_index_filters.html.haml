@@ -1,0 +1,10 @@
+.clearfix
+  .text-line(ng-repeat="group in filter_groups track by group.id")
+    .clearfix.font-bold(ng-init="group.open=false")
+      %span(ng-click="group.open=!group.open") {{group.name}}
+    .row(ng-show="group.open")
+      %span(ng-repeat="filter in group.filter_values | filter:value")
+        .col-xs-3 
+          %form.gtr-b-sm(name="filterForm")
+            %input.form-control.sm(ng-class="{'tspr':!filterForm.$dirty}" ng-model="filter.value")
+      

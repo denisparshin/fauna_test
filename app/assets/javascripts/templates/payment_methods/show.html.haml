@@ -1,0 +1,27 @@
+.clearfix
+  %ul.nav.nav-tabs
+    %li
+      %a(ng-href='/#/payment_methods')
+        = icon :angle_left, class: "smile gtr-r-xs text-sm align-middle"
+        .smile.align-middle
+          {{::'js.payment_methods.title' | translate}}
+    %li(ng-if="paymentMethod.paymentMethod")
+      %a(ng-href='/#/payment_methods/{{::paymentMethod.paymentMethod.id}}') {{::paymentMethod.paymentMethod.name}}
+    %li.active
+      %a(href) {{::paymentMethod.name}}
+    .pull-right.gtr-r(style="padding-top: 3px;")
+      %button.btn.btn-link.link-red(type="button" ng-click="removePaymentMethod(paymentMethodId)" confirm="{{::'js.payment_methods.actions.confirm_remove' | translate}}")
+        %span(bs-tooltip title="{{::'js.payment_methods.actions.delete' | translate}}" placement="left")
+          =icon :trash
+.tab-content.bg-white.gtr-hor.gtr-ver
+  .gtr-ver.gtr-hor
+    %form(name="paymentMethodForm" ng-submit="updatePaymentMethod()")
+      %label.form-label.required
+        .form-label-text
+          {{::'js.attributes.name' | translate}}
+          %input.form-control(ng-model="paymentMethod.name" required)
+      .clearfix
+        .form-label-text {{::'js.attributes.description' | translate}}
+        %summernote(ng-model="paymentMethod.description" on-image-upload="imageUpload(files)" editor="editor")
+      .clearfix.text-right
+        %button.btn.btn-primary(ng-disabled="!paymentMethodForm.$valid || !paymentMethodForm.$dirty") {{::'js.helpers.submit' | translate}}

@@ -1,0 +1,11 @@
+.glyphicon {
+  &-chevron {
+    &-left {
+      @include icomoon($icon-angle-left);
+    }
+    &-right {
+      @include icomoon($icon-angle-right);
+    }
+  }
+}
+

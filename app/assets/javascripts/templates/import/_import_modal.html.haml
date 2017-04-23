@@ -1,0 +1,11 @@
+.modal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %h4 {{::"js.import.title" | translate}}
+      .modal-body
+        %pre(style="max-height: 200px; overflow: auto;") {{activePreview}}
+      .modal-footer
+        %button.btn.btn-default(ng-click="$hide()") {{::"js.helpers.cancel" | translate}}
+        %button.btn.btn-primary(ng-click="import(activeKey)") {{::"js.helpers.submit" | translate}}
+

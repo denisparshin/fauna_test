@@ -1,0 +1,40 @@
+.tab-content.bg-white.gtr-hor.gtr-ver
+  .gtr-ver.gtr-hor
+    %form(name="userForm" ng-submit="updateUser(user)")
+      %label.form-label.required
+        .form-label-text
+          {{::'js.users.attributes.first_name' | translate}}
+          %input.form-control(ng-model="user.first_name" required)
+      %label.form-label
+        .form-label-text
+          {{::'js.users.attributes.last_name' | translate}}
+          %input.form-control(ng-model="user.last_name")
+      %label.form-label.required
+        .form-label-text
+          {{::'js.users.attributes.username' | translate}}
+          %input.form-control(ng-model="user.username" required)
+      %label.form-label
+        .form-label-text
+          {{::'js.users.attributes.e-mail' | translate}}
+          %input.form-control(ng-model="user.email")
+      %label.form-label
+        .form-label-text
+          {{::'js.users.attributes.phone' | translate}}
+          %input.form-control(ng-model="user.phone")
+      %label.form-label
+        .form-label-text
+          {{::'js.users.attributes.discount' | translate}}
+          %input.form-control(ng-model="user.discount")
+      %label.form-label
+        .form-label-text
+          {{::'js.users.attributes.city' | translate}}
+          %input.form-control(ng-model="user.city")
+      %label.form-label
+        .form-label-text
+          {{::'js.users.attributes.address' | translate}}
+          %input.form-control(ng-model="user.address")
+      
+      
+      .clearfix.text-right
+        %button.btn.btn-primary(ng-disabled="!userForm.$valid || !userForm.$dirty") {{::'js.helpers.submit' | translate}}
+  

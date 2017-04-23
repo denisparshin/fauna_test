@@ -1,0 +1,31 @@
+.clearfix
+  %ul.nav.nav-tabs
+    %li
+      %a(ng-href='/#/catalogs')
+        = icon :angle_left, class: "smile gtr-r-xs text-sm align-middle"
+        .smile.align-middle
+          {{::'js.categories.title' | translate}}
+    %li(ng-if="catalog.catalog")
+      %a(ng-href='/#/catalogs/{{::catalog.catalog.id}}') {{::catalog.catalog.name}}
+    %li.active
+      %a(href) {{::catalog.name}}
+    .pull-right.gtr-r(style="padding-top: 3px;")
+      %button.btn.btn-link.link-red(type="button" ng-click="removeCatalog(catalogId)" confirm="{{::'js.catalogs.actions.confirm_remove' | translate}}")
+        %span(bs-tooltip title="{{::'js.catalogs.actions.delete' | translate}}" placement="left")
+          =icon :trash
+.tab-content.bg-white.gtr-hor.gtr-ver
+  .gtr-ver.gtr-hor
+    %form(name="catalogForm" ng-submit="updateCatalog()")
+      %label.form-label.required
+        .form-label-text
+          {{::'js.attributes.name' | translate}}
+          %input.form-control(ng-model="catalog.name" required)
+      %label.form-label
+        .form-label-text
+          {{::'js.attributes.slug' | translate}}
+          %input.form-control(ng-model="catalog.slug")
+      .clearfix
+        .form-label-text {{::'js.attributes.description' | translate}}
+        %summernote(ng-model="catalog.description" on-image-upload="imageUpload(files)" editor="editor")
+      .clearfix.text-right
+        %button.btn.btn-primary(ng-disabled="!catalogForm.$valid || !catalogForm.$dirty") {{::'js.helpers.submit' | translate}}

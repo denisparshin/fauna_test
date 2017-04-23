@@ -1,0 +1,48 @@
+.row.border-b.border-light(ng-class="{'bg-body': $index % 2 != 0}")
+  .gtr-hor.gtr-t
+    %form(name="subProductForm" ng-submit="submit(sub, subProductForm)")
+      .row
+        .col-xs-4
+          %label.form-label.required
+            .form-label-text
+              {{::"js.sub_products.attributes.name" | translate}}
+            %input.form-control(ng-model="sub.name" required)
+        .col-xs-3
+          %label.form-label.required
+            .form-label-text {{::"js.sub_products.attributes.price" | translate}}
+            %input.form-control(ng-model="sub.price" required)
+        .col-xs-3
+          %label.form-label.required
+            .form-label-text {{::"js.sub_products.attributes.count" | translate}}
+            %input.form-control(ng-model="sub.count" required )
+        .col-xs-2
+          %label.form-label.required
+            .form-label-text {{::"js.sub_products.attributes.sku" | translate}}
+            %input.form-control(ng-model="sub.sku" required )
+          
+
+      .clearfix.text-sm.gtr-b
+        id:
+        %b {{sub.id}}
+      .clearfix
+        .tbl
+          .tbl-cell.align-bottom
+            .smile.gtr-r
+              %label.form-checkbox
+                %input(ng-model="sub.visible" type="checkbox")
+                %span {{::"js.sub_products.attributes.visible" | translate}}
+            .smile.gtr-r
+              %label.form-checkbox
+                %input(ng-model="sub.avail" type="checkbox")
+                %span {{::"js.sub_products.attributes.avail" | translate}}
+          .tbl-cell.align-bottom.text-right
+            .gtr-b-sm.smile(ng-show="subProductForm.$dirty")
+              %button.btn.btn-primary(type="submit" ng-disabled="!subProductForm.$valid") {{::"js.helpers.save" | translate}}
+            .gtr-b-sm.smile(ng-show="sub.id")
+              %button.btn.btn-link.link-red(type="button" ng-click="removeSubProduct(sub.id, $index)" confirm="{{::'js.sub_products.actions.confirm_remove' | translate}}")
+                %span(bs-tooltip title="{{::'js.sub_products.actions.delete' | translate}}" placement="left")
+                  =icon :trash
+            .gtr-b-sm.smile(ng-show="!sub.id")
+              %button.btn.btn-link.link-red(type="button" ng-click="removeSubProduct(sub.id, $index)")
+                %span(bs-tooltip title="{{::'js.sub_products.actions.delete' | translate}}" placement="left")
+                  =icon :trash

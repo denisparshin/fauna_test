@@ -1,0 +1,27 @@
+.modal
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header.bg-light
+        %h4 {{::"js.pictures.slider" | translate}}
+      .modal-body.bg-superlight
+        .tbl
+          .tbl-cell.align-middle.cell-1em(ng-show="topSliders.length > 1")
+            %span(ng-click="activePic = activePic > 0 ? activePic=activePic-1 : topSliders.length - 1")
+              = icon :l_angle_left, class: "head-lg cursor-pointer btn-link"
+          .tbl-cell.align-middle
+            #pictures.carousel.slide
+              .carousel-inner
+                .item(ng-repeat="pic in topSliders track by $index" ng-class="{'active': $index == activePic}")
+                  .clearfix.position-relative
+                    = icon :trash, class: "btn-link link-red link-remove-tl"
+                    %svg(class="col-12" preserveAspectRatio="none" viewBox="0 0 2 1")
+                    .cover.bg-contain(style="background-image: url('{{pic.url}}')")
+          .tbl-cell.align-middle.cell-1em(ng-show="topSliders.length > 1")
+            %span(ng-click="activePic =  activePic < (topSliders.length - 1) ? activePic + 1 : 0")
+              = icon :l_angle_right, class: "head-lg cursor-pointer btn-link"
+        .row-b(ng-show="topSliders.length > 1")
+          %ol.carousel-indicators
+            %li(ng-class="{'active': $index == activePic}" data-target="#pictures" ng-click="$parent.activePic=$index" ng-repeat="pic in topSliders track by $index")
+      .modal-footer.bg-light
+        %button.btn.btn-default(type="button" ng-click="$hide()") {{::"js.helpers.close" | translate}}
+

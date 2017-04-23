@@ -1,0 +1,12 @@
+.clearfix.text-center
+  %ul.pagination(ng-if="pagesAmount > 1")
+    %li(ng-if="viewPages[0] > 1") 
+      %a(ng-href="/#\{{path}}?page=1&{{params}}") 1
+    %li(ng-if="viewPages[0] > 2") 
+      %a(ng-href="/#\{{path}}?page={{page - 1}}&{{params}}") ...
+    %li(ng-repeat="p in viewPages" ng-class="{'active': p==page}")
+      %a(ng-href="/#\{{path}}?page={{p}}&{{params}}") {{p}}
+    %li(ng-if="viewPages[viewPages.length - 1] < pagesAmount - 1") 
+      %a(ng-href="/#\{{path}}?page={{page + 1}}&{{params}}") ...
+    %li(ng-class="{'active': pagesAmount==page}")
+      %a(ng-href="/#\{{path}}?page={{pagesAmount}}&{{params}}") {{pagesAmount}}

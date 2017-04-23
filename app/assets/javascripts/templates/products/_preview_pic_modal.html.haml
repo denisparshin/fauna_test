@@ -1,0 +1,10 @@
+.modal
+  .modal-dialog
+    .modal-content
+      .modal-header.bg-light
+        %h4 {{::"js.pictures.actions.add" | translate}}
+      .modal-body.text-center
+        %img(ng-src="{{newPictureUrl}}" style="max-width: 100%;")
+      .modal-footer.bg-light
+        %button.btn.btn-default(type="button" ng-click="$hide()") {{::"js.helpers.cancel" | translate}}
+        %button.btn.btn-primary(type="button" ng-click="uploadNew()") {{::"js.helpers.add" | translate}}

@@ -1,0 +1,17 @@
+/.bundle
+/log/*
+/vendor/assets/bower_components
+!/log/.keep
+/tmp
+colu/node_modules
+sign_js/node_modules
+public/uploads
+.byebug_history
+chef/cookbooks
+chef/tmp
+chef/Cheffile.lock
+/config/database.yml
+.ruby-gemset
+.ruby-version
+.env.development
+.env.local

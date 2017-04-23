@@ -1,0 +1,12 @@
+.progress {
+  height: 2px;
+  width: 100%;
+  border-radius: 2px;
+  overflow: hidden;
+  &-value {
+    float: left;
+    height: 2px;
+    background: red;
+    width: 0;
+  }
+}

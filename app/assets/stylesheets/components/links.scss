@@ -1,0 +1,69 @@
+.link {
+  &-base {
+    &, &:hover, &:focus {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+  &-inherit {
+    color: inherit;
+    text-decoration: none;
+    &:hover {
+      color: $link-color;
+    }
+  }
+  &-red {
+    color: red;
+    &:hover {
+      color: darken(red, 10%);
+    }
+  }
+}
+.pic-link {
+  &.active {
+    background: #ECF1F7;
+    border-color: #96BAD7;
+    @include box-shadow(none);
+  }
+  overflow: hidden;
+  @include scope((
+    "position-relative", 
+    "border-hor", 
+    "border-ver", 
+    "border-light", 
+    "bg-superlight", 
+    "btn", 
+    "nospace",
+  ));
+  &:hover .link-remove-tl {
+    left: 2px;
+  }
+  &:hover .link-remove-tl-n {
+    left: 25px;
+  }
+  .link {
+    &-remove-tl {
+      position: absolute;
+      top: 2px;
+      left: -25px;
+      z-index: 3;
+      padding: 0 5px;
+      border-radius: 2px;
+      background: #ECF1F7;
+      border: 1px solid #ddd;
+      @include transition(left 200ms ease-out);
+      &:hover {
+	background: white;   
+      }
+      &-n {
+	position: absolute;
+	z-index: 3;
+	left: -40px;
+	padding: 5px;
+	font-size: 12px;
+	top: -2px;
+	@include transition(left 200ms ease-out);
+      }
+    }
+  }
+}

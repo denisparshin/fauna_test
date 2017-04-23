@@ -1,0 +1,10 @@
+.modal
+  .modal-dialog
+    .modal-content
+      .modal-header.bg-light
+        .text-md {{::"js.helpers.are_you_sure" | translate}}
+      .modal-body
+        {{confirm}}
+      .modal-footer.bg-light
+        %button.btn.btn-default(ng-click="$hide()") {{::"js.helpers.cancel" | translate}}
+        %button.btn.btn-danger(ng-click="confirmClick()") {{::"js.helpers.confirm" | translate}}

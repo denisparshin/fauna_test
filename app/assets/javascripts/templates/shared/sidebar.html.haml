@@ -1,0 +1,3 @@
+.sidebar
+  .gtr-hor.gtr-ver.font-light
+    %a.sidebar-link(ng-repeat="item in sideMenu track by $index" ng-href="{{::item[0]}}" ng-class="{'active': $root.currentPath == item[1]}") {{item[2]}}

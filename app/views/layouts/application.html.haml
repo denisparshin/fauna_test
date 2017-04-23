@@ -1,0 +1,18 @@
+!!!
+%html(ng-app="app")
+  %head
+    = stylesheet_link_tag    'application'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+    %script(type="text/javascript")
+      window.anonimusUser = #{!user_signed_in?}
+  %body(ng-app="app" class="#{cookies[:sidebar_close] ? 'sidebar-close' : ''}" ng-controller="mainCtrl")
+    .main
+      %header
+      .tbl
+        %sidebar(ng-if="$root.user.id")
+        .tbl-cell(ng-class="alignMiddle ? 'align-middle' : 'align-top'" style="overflow: auto;")
+          .tbl(ng-show="$root.waiting || !$root.ready" spinner)
+          %span.content(ng-show="!$parent.waiting")
+            .gtr-hor.gtr-ver(ng-view)
+

@@ -1,0 +1,44 @@
+.clearfix
+  %form.text-row(name="filtersForm" ng-submit="submitSearch()")
+    .box-tickets.bg-white.gtr-hor.gtr-t
+      .row.text-line
+        .col-xs-3
+          %label.form-label
+            .form-label-text {{::'js.products.placeholder.keyword' | translate}}
+            .form-search
+              %input.form-control(ng-model="search.keyword")
+        .col-xs-3
+          %label.form-label
+            .form-label-text {{::'js.products.placeholder.order_by' | translate}}
+            %select.form-control(ng-model="search.order_by")
+              %option(value='') {{::'js.products.placeholder.order_by' | translate}}
+              %option(ng-repeat="c in searchOrderings" value="{{c.value}}") {{c.name}}
+      .row.text-line(ng-show="filtersForm.$dirty")
+        .col-xs-12
+          %button.btn.btn-default.btn-block(type='submit')
+            {{::"js.helpers.apply" | translate}}
+.clearfix
+  .clearfix(ng-repeat="user in users")
+    .text-line
+      .bg-white.box-tickets
+        .gtr-hor.gtr-t
+          .clearfix.text-md.font-bold
+            {{user.first_name}} {{user.last_name}}
+            
+            %a(ng-href="/#/users/{{::user.id}}")
+              .smile.align-middle.text-xs.gtr-l-xs
+                = icon :pencil
+        .gtr-ver
+          .col-xs-4
+            {{::"js.users.attributes.username" | translate}}: {{user.username}}
+          .col-xs-4
+            {{::"js.users.attributes.phone" | translate}}: 0{{user.phone}}
+          .col-xs-4
+            {{::"js.users.attributes.e-mail" | translate}}: {{user.email}}
+          .col-xs-4
+            {{::"js.users.attributes.discount" | translate}}: {{user.discount}}
+          .col-xs-4
+            {{::"js.users.attributes.city" | translate}}: {{user.city}}
+          .col-xs-4
+            {{::"js.users.attributes.address" | translate}}: {{user.address}}
+%pagination(page="page" count="count" per="per")

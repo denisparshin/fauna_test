@@ -1,0 +1,87 @@
+.clearfix
+  //%products-index-filters
+
+  %form.text-row(name="filtersForm" ng-submit="submitSearch()")
+    .box-tickets.bg-white.gtr-hor.gtr-t
+      .row.text-line
+        .col-xs-3
+          %label.form-label
+            .form-label-text {{::'js.products.placeholder.catalog_id' | translate}}
+            %select.form-control(ng-model="search.catalog_id")
+              %option(value='') {{::'js.products.placeholder.catalog_id' | translate}}
+              %option(ng-repeat="c in catalogs" value="{{c.id}}") {{c.name}}
+        .col-xs-3
+          %label.form-label
+            .form-label-text {{::'js.products.placeholder.category_id' | translate}}
+            %select.form-control(ng-model="search.category_id")
+              %option(value='') {{::'js.products.placeholder.category_id' | translate}}
+              %option(ng-repeat="c in getCategories()" value="{{c.id}}") {{c.name}}
+        .col-xs-3
+          %label.form-label
+            .form-label-text {{::'js.products.placeholder.keyword' | translate}}
+            .form-search
+              %input.form-control(ng-model="search.keyword")
+        .col-xs-3
+          %label.form-label
+            .form-label-text {{::'js.products.placeholder.order_by' | translate}}
+            %select.form-control(ng-model="search.order_by")
+              %option(value='') {{::'js.products.placeholder.order_by' | translate}}
+              %option(ng-repeat="c in searchOrderings" value="{{c.value}}") {{c.name}}
+      .row.text-line(ng-show="filtersForm.$dirty")
+        .col-xs-12
+          %button.btn.btn-default.btn-block(type='submit')
+            {{::"js.helpers.apply" | translate}}
+  
+%h3 {{::"js.products.attributes.add_new" | translate}}
+.gtr-hor.gtr-t
+  %form(name="createProductForm" ng-submit="submit(sub, createProductForm)")
+    .row
+      .col-xs-3
+        %label.form-label.required
+          .form-label-text
+            {{::"js.products.attributes.name" | translate}}
+          %input.form-control(ng-model="sub.name" required)
+      .col-xs-4
+        %label.form-label.required
+          .form-label-text
+            {{::"js.products.attributes.title" | translate}}
+          %input.form-control(ng-model="sub.title" required)
+      .col-xs-3
+        %label.form-label.required
+          .form-label-text
+            {{::"js.products.attributes.category_id" | translate}}
+          %input.form-control(ng-model="sub.category_id" required)
+      .tbl
+        .tbl-cell.align-bottom.text-right
+          .gtr-b-sm.smile(ng-show="createProductForm.$dirty")
+            %button.btn.btn-primary(type="submit" ng-disabled="!createProductForm.$valid") {{::"js.helpers.save" | translate}}
+          .gtr-b-sm.smile(ng-show="sub.id")
+  
+  
+  
+  .clearfix(ng-if="products && !products.length")
+    .alert.alert-info.clearfix
+      .alert-container
+        {{::"js.info.nothing_found" | translate}}
+  .gtr-b-sm(ng-repeat="product in products track by product.id" product-item)
+    .box-tickets.bg-white
+      .gtr-hor-sm.gtr-ver-sm
+        .row
+          .tbl
+            .tbl-cell.cell-3.align-top.gtr-hor
+              %a(ng-if="product.pictures.length" ng-href='/#/products/{{::product.id}}')
+                %img.cell-12(ng-src="{{product.pictures[0]}}")
+            .tbl-cell.cell-9.align-top.gtr-hor
+              .text-line
+                %a(ng-href='/#/catalogs/{{::product.category.catalog.id}}') {{::product.category.catalog.name}}
+                \/
+                %a(ng-href='/#/categories/{{::product.category.id}}') {{::product.category.name}}
+                \/
+                %a(ng-href='/#/products/{{::product.id}}')
+                  {{::product.name}}
+              .gtr-b-sm.text-sm(ng-repeat="sub in product.sub_products track by sub.id")
+                .smile.label.label-default.align-middle {{sub.sku}}
+                .smile.align-middle(ng-bind-html="sub.name")
+                %i.smile.align-middle.color-green ({{sub.price | currency}})
+
+  %pagination(page="page" count="count" per="per")

@@ -1,0 +1,53 @@
+.datepicker.dropdown-menu {
+  width: 250px;
+  border: 1px solid #ccc;
+  padding: 2px;
+  @include clearfix;
+  button {
+    outline: none;
+    border: 0px;
+  }
+  tbody {
+    height: 180px;
+  }
+  tbody button {
+    padding: 6px;
+  }
+  &.datepicker-mode-1, &.datepicker-mode-2 {
+    tbody button {
+      height: 65px;
+    }
+  }
+  .btn-default {
+    background-color: white;
+    &:hover {
+      background-color: darken(white, 10%);
+    }
+  }
+  .btn-info {
+    color: white!important;
+    background-color: $btn-info-bg!important;
+    &:hover {
+      background-color: $btn-info-bg!important;
+    }
+  }
+  .btn-primary {
+    color: white!important;
+    background-color: $btn-primary-bg!important;
+    &:hover {
+      background-color: $btn-primary-bg!important;
+    }
+  }
+}
+
+.timepicker.dropdown-menu {
+  padding: 0 4px;
+  button {
+    outline: none;
+    border: 0px;
+  }
+  tbody button {
+    padding: 6px;
+  }
+}
+

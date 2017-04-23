@@ -1,0 +1,10 @@
+asset "angular",                  "~1.4.x";
+asset "angular-strap",            "2.3.6";
+asset "angular-route",            "~1.4.x";
+asset "angular-translate",        "2.8.0";
+asset "ng-file-upload",           "9.0.7";
+asset "underscore",               "1.8.3";
+asset "checklist-model",          "0.6.0";
+asset "angular-devise"
+asset "angular-summernote",       "0.7.1"
+asset "js-xlsx"

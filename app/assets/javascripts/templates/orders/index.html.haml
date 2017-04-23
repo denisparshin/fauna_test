@@ -1,0 +1,27 @@
+.gutter-vertical
+  .text-line.row
+    %form.bg-white.jcarousel-wrapper.gutter-vertical(ng-submit="")
+      .col-md-3
+        %label.form-label
+          .form-label-text {{'js.helpers.date_from' | translate}}
+          .input-group
+            %input.form-control(bs-datepicker data-max-date="{{search.date_to}}" ng-model="search.date_from" type="text" ng-change="submitSearch()")
+            .input-group-addon=icon :calendar
+      .col-md-3
+        %label.form-label
+          .form-label-text {{'js.helpers.date_to' | translate}}
+          .input-group
+            %input.form-control(bs-datepicker data-min-date="{{search.date_from}}" ng-model="search.date_to" type="text" ng-change="submitSearch()")
+            .input-group-addon=icon :calendar
+      .col-md-3.pull-right
+        %label.form-label
+          .form-label-text {{'js.helpers.status' | translate}}
+          %select.form-control(ng-model="search.status" ng-change="submitSearch()")
+            %option(selected="true" value="") {{'js.helpers.all' | translate}}
+            %option(ng-repeat="(key, status) in statuses" value="{{key}}") {{::status.title}}
+  .progress
+  .progress-value
+  .clearfix(ng-repeat="order in orders track by order.id")
+    %order-item
+  .clearfix
+    %pagination(page="page" count="count" per="per")
