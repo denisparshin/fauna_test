@@ -5,8 +5,8 @@ directive = ->
   templateUrl: "products/_tab_info.html"
   controller: ["$scope", ($scope) ->
 
-    CRUD.show "users", $scope.userId, (response) ->
-      $scope.user = response.user
+    CRUD.show "products", $scope.productId, (response) ->
+      $scope.product = response.product
       $scope.$apply() unless $scope.$$phase
 
     
@@ -23,4 +23,4 @@ directive = ->
     
 
 angular.module "app.products"
-  .directive "productTabInfo", [directive]
+.directive "productTabInfo", [directive]
