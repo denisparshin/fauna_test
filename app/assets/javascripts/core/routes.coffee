@@ -43,7 +43,7 @@ angular.module "app.core"
       .when '/users/:userId',
         templateUrl: 'users/show.html',
         controller: 'usersShowCtrl'
-      .when '/users/:id/:activeTab',
+      .when '/users/:userId/:activeTab',
         templateUrl: 'users/show.html',
         controller: 'usersShowCtrl'
       .otherwise

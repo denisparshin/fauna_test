@@ -1,1 +1,41 @@
-%h1 Hello world
+.gutter-left-2x
+  .text-row(ng-if="!orders.length && orders")
+    .tabs-content.text-center(style="border: 1px solid #dedede;" ng-bind-html="'js.members.no_orders' | translate | colonToSmiley")
+  .text-row(ng-repeat="order in orders track by $index")
+    .tabs-content(style='background-color: #fff; overflow: hidden; border: 1px solid #dedede;')
+      .text-line
+        .text-line.gutter-bottom-sm.row-top.row.gutter-top-sm.gutter-horizontal(style="background-color: #e8f0f0; border-bottom: 1px solid #dedede;")
+          .row
+            .col-md-6.col-xs-12
+              .smile.gutter-right.text-sm.font-bold {{::order.created_at | date:"dd/MM/yyyy 'в' HH:mm"}}
+              %div(class="smile order-status status-{{::order.status}}") {{::"js.orders.statuses." + order.status + ".title" | translate}}
+            .col-md-6.col-xs-12.text-md-right.text-md
+              %b {{::"js.cart.total" | translate}}: {{::order.summ | currency}}
+      .row.row-bottom.col-12
+        .clearfix
+          %span(ng-repeat="sub in order.sub_products track by sub.id")
+            .col-md-4.col-sm-6.col-xs-12
+              .text-line
+                .product-preview.text-center
+                  %a.col-12(ng-href="/products/{{::sub.product.id}}")
+                    %svg.col-12(preserveAspectRatio="none" viewBox="0 0 1 1")
+                    .bg-center.cover.bg-white(style="background-image: url('{{::sub.product.image_url}}')" ng-if="sub.product.image_url")
+                    .cover.bg-white(ng-if="!sub.product.image_url")
+                      .tbl.preview-pic
+                        .tbl-cell.align-middle.preview-pic
+                          %i.product-preview-pic-icon.icon-cat-staff
+                  .gutter-horizontal.gutter-vertical-sm
+                    .product-preview-name
+                      .tbl-cell.align-middle
+                        %a.link-dark(ng-href="/products/{{::sub.product.id}}")
+                          %span(ng-bind-html="sub.product.name")
+                        .gutter-top-xs.font-bold
+                          .smile
+                            {{::order.order_data[sub.id].price | currency}}
+                          .smile &times;
+                          .smile
+                            {{::order.order_data[sub.id].amount}}
+                          .smile =
+                          .smile
+                            {{::(order.order_data[sub.id].price * order.order_data[sub.id].amount) | currency}}
+  %pagination(page="page" items-count="count" per-page="per" ng-if="count")
